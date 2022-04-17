@@ -46,11 +46,16 @@ class MDatabase:
     def add_url(self, url):
         idx = sha224(url.encode('utf-8')).hexdigest()
         token = sha224(('view:' + idx).encode('utf-8')).hexdigest()
-        self.ims.insert_one({
-            'url': url,
-            'token': token,
-            'idx': idx,
-        })
+        document = self.ims.find_one({'idx': idx})
+
+        if document is None:
+            self.ims.insert_one({
+                'url': url,
+                'token': token,
+                'idx': idx,
+            })
+        else:
+            ...
         new_url = '/view/' + idx
         return new_url, token
     def add_entry(self, token, agent=None, ip=None):

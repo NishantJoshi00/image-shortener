@@ -23,10 +23,17 @@
             </li>
         </ul>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex">
+            <form class="d-flex" id="awesome-form">
                 <input class="form-control me-2" type="search" placeholder="Search Token" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <script>
+                document.getElementById('awesome-form').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const token = document.getElementById('awesome-form').children[0].value;
+                    window.location.href = `{{ url_for('stats', token="${token}") }}`
+                });
+            </script>
         </div>
     </nav>
     {% block content %}

@@ -48,6 +48,8 @@ async def view(request: Request, idx: str):
         keys = (k for k in request.headers if k.startswith('sec-ch'))
         data = (': '.join((k, request.headers[k])) for k in keys)
         data = '; '.join(data)
+        if data == '':
+            data = request.headers.get('User-Agent')
         db.add_entry(token, data, request.client.host)
         
         return Response(

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Generated URL</h1>
+                <hr class="my-4">
+                <div class="container">
+                    <p>Original Url: <a href="{{ url }}">{{ url }}</a></p>
+                    <hr>
+                    <p>Token: <a href="{{ url_for('stats', token=token) }}">{{ token }}</a></p>
+                    <hr>
+                    <p>Generated Url: <a href="{{ new_url }}">{{ new_url }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

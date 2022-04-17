@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Image URL Generator</h1>
+                <hr class="my-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post" action="/generate">
+                            <div class="form-group">
+                              <label for="url">Image URL</label>
+                              <input name="url" type="url" class="form-control" id="url" aria-describedby="emailHelp" placeholder="Enter Image Url">
+                            </div>
+                            <br>
+                              <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+
+{% endblock %}
+

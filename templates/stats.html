@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}
+Stats
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-4">Stats</h1>
+                <p class="lead">{{ token }}</p>
+                
+                <hr class="my-4">
+                <a class="lead" href="{{ url_for('view', idx=url) }}">{{ url }}</a>
+                <hr class="my-4">
+                
+                <div class="container">
+                    <ul class="list-group">
+                        {% for entry in entries %}
+                        <li class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ entry[1] }}</h5>
+                                <small>{{ entry[0] }}</small>
+                              </div>
+                              <small>{{ entry[2] }}</small>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
